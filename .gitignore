@@ -4,5 +4,5 @@
 .terraform/
 .terraform.lock.hcl
 terraform.tfvars
-.idea/*
-.idea
+#.idea/*
+#.idea
