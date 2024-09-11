@@ -1,0 +1,58 @@
+variable "location" {
+  type        = string
+  description = "Azure region for the resources"
+  default     = "UK South"
+}
+
+variable "resource_group_name" {
+  type        = string
+  description = "The name of the resource group"
+}
+
+variable "databricks_workspace_name" {
+  type        = string
+  description = "Name of Databricks workspace"
+}
+
+variable "vnet_address_space" {
+  type        = list(string)
+  description = "The address space for the VNet"
+  default     = ["10.0.0.0/16"]
+}
+
+variable "public_subnet_cidr" {
+  type        = string
+  description = "CIDR block for the public subnet"
+  default     = "10.0.1.0/24"
+}
+
+variable "private_subnet_cidr" {
+  type        = string
+  description = "CIDR block for the private subnet"
+  default     = "10.0.2.0/24"
+}
+
+variable "azure_client_id" {
+  type        = string
+  description = "Azure client ID for authentication"
+}
+
+variable "azure_client_secret" {
+  type        = string
+  description = "Azure client secret for authentication"
+}
+
+variable "azure_tenant_id" {
+  type        = string
+  description = "Azure tenant ID for authentication"
+}
+
+variable "azure_subscription_id" {
+  type        = string
+  description = "Azure tenant ID for authentication"
+}
+
+variable "prefix" {
+  type        = string
+  description = "Prefix used for the resources"
+}
