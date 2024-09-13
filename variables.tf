@@ -37,26 +37,6 @@ variable "private_subnet_cidr" {
   default     = "10.0.2.0/24"
 }
 
-variable "azure_client_id" {
-  type        = string
-  description = "Azure client ID for authentication"
-}
-
-variable "azure_client_secret" {
-  type        = string
-  description = "Azure client secret for authentication"
-}
-
-variable "azure_tenant_id" {
-  type        = string
-  description = "Azure tenant ID for authentication"
-}
-
-variable "azure_subscription_id" {
-  type        = string
-  description = "Azure tenant ID for authentication"
-}
-
 variable "prefix" {
   type        = string
   description = "Prefix used for the resources"
