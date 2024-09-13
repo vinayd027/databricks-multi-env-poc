@@ -14,6 +14,11 @@ variable "databricks_workspace_name" {
   description = "Name of Databricks workspace"
 }
 
+variable "account_id" {
+  type        = string
+  description = "account id of the databricks account"
+}
+
 variable "vnet_address_space" {
   type        = list(string)
   description = "The address space for the VNet"
