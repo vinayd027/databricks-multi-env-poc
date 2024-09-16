@@ -1,0 +1,44 @@
+trigger:
+  branches:
+    include:
+      - dev
+      - preprod
+      - prod
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+
+# Install the Databricks CLI
+- script: |
+    pip install databricks-cli
+  displayName: 'Install Databricks CLI'
+
+# Configure the Databricks CLI with your token
+- script: |
+    databricks configure --token <<EOF
+    ${{ vars.DATABRICKS_HOST }}
+    ${{ secrets.DATABRICKS_TOKEN }}
+    EOF
+  displayName: 'Configure Databricks CLI'
+
+# Import notebooks to the Databricks workspace
+- script: |
+    databricks workspace import_dir ./notebooks /Shared/Notebooks
+  displayName: 'Import Notebooks to Databricks Workspace'
+
+# Run tests (assumes you have notebooks designed to run as tests)
+- script: |
+    databricks runs submit --notebook-path /Shared/Notebooks/test_notebook
+  displayName: 'Run Test Notebooks'
+
+# Deploy notebooks to the production environment (after tests pass)
+- script: |
+    echo "Deploying to Production..."
+    databricks workspace export_dir /Shared/Notebooks ./prod_notebooks
+  displayName: 'Deploy to Production'
