@@ -39,5 +39,5 @@ variable "private_subnet_cidr" {
 
 variable "prefix" {
   type        = string
-  description = "Prefix used for the resources"
+  description = "Prefix used for the resources "
 }
